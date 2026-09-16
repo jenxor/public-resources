@@ -1,0 +1,15 @@
+# PR 게이트.
+# main ruleset의 "Require branches to be up to date before merging"(strict status check 정책)은
+# 필수 status check가 1개 이상 있어야 발효된다(2026-09-17 실측). 이 워크플로는 path 필터 없이
+# 모든 PR에서 항상 발화해 그 필수 체크(`gate`)를 제공한다.
+# 실제 검증 잡이 생기면 이 잡이 그 결과를 집계(needs + if: always())하도록 확장한다.
+name: Gate
+
+on:
+  pull_request:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "gate ok"
